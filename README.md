@@ -5,9 +5,9 @@ Note: This is a work in progress, so new features are yet to come!
 
 While there are a few side functions, MyLib is mainly made for DOM manipulation.
 
-#|—————————————————|
-#| *Documentation* |
-#|—————————————————|
+|—————————————————|
+| *Documentation* |
+|—————————————————|
 
 ErrorCatch(code, htmlElement, type, replace);
 	Parameters:
