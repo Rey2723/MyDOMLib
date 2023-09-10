@@ -32,8 +32,7 @@ ErrorCatch(code, htmlElement, type, replace);
 			it to true. If you don't you
 			set it to false.
 	Example:
-
-		<!DOCTYPE html>
+		`<!DOCTYPE html>
 		<html>
 		<head>
 			<!--Assuming you have the library file-->
@@ -65,4 +64,4 @@ ErrorCatch(code, htmlElement, type, replace);
 				//Note: You will need to have ES6 enabled to have multi-line comments.
 			</script>
 		</body>
-		</html>
+		</html>`
