@@ -57,4 +57,5 @@ While there are a few side functions, MyLib is mainly made for DOM manipulation.
         // Note: You will need to have ES6 enabled to have multi-line comments.
     </script>
 </body>
-</html>```
+</html>
+```
