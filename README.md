@@ -1,5 +1,4 @@
 # MyDOMLib
-# MyDOMLib
 
 Hello! Welcome to MyLib!
 Note: This is a work in progress, so new features are yet to come!
