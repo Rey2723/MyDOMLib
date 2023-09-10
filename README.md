@@ -5,9 +5,9 @@ Note: This is a work in progress, so new features are yet to come!
 
 While there are a few side functions, MyLib is mainly made for DOM manipulation.
 
-|—————————————————|
-| *Documentation* |
-|—————————————————|
+##|—————————————————|
+###| *Documentation* |
+####|—————————————————|
 
 ErrorCatch(code, htmlElement, type, replace);
 	Parameters:
@@ -32,7 +32,8 @@ ErrorCatch(code, htmlElement, type, replace);
 			it to true. If you don't you
 			set it to false.
 	Example:
-		`<!DOCTYPE html>
+ 
+		```<!DOCTYPE html>
 		<html>
 		<head>
 			<!--Assuming you have the library file-->
@@ -64,4 +65,5 @@ ErrorCatch(code, htmlElement, type, replace);
 				//Note: You will need to have ES6 enabled to have multi-line comments.
 			</script>
 		</body>
-		</html>`
+		</html>```
+  	
