@@ -8,7 +8,7 @@ While there are a few side functions, MyLib is mainly made for DOM manipulation.
 
 ### ErrorCatch(code, htmlElement, type, replace)
 
-#### Parameters:
+#### Parameter(s):
 
 - `code`:
   The code you want to analyze. It can either be a function, string (" "), or a multi-line string (``).
@@ -59,3 +59,63 @@ While there are a few side functions, MyLib is mainly made for DOM manipulation.
 </body>
 </html>
 ```
+
+### _(selection)
+
+#### Parameter(s):
+
+-`selection`:
+  The HTML element you want to select. It can start with `.` when you want to select a class, `#` for when you wanat to select an ID, and use start with nothing if you are selecting elements.
+  Example:
+  ```html
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Assuming you have the library file-->
+    <script src="myLib.js"></script>
+    <style>
+        .hello {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiv">
+        This is a div with the ID of "myDiv"
+    </div>
+    <p class="hello">This is a p element with the class of "hello"</p>
+    <p class="hello">This is a p element with the class of "hello"</p>
+    <p class="hello">This is a p element with the class of "hello"</p>
+    <p class="hello">This is a p element with the class of "hello"</p>
+    <p class="hello">This is a p element with the class of "hello"</p>
+    <img id="picture" src="https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg" alt="Cat August 2010-4.jpg" width="300">
+    <img id="picture2" src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Black_Labrador_Retriever_-_Male_IMG_3323.jpg" width="300">
+    <div id="appendDiv"></div>
+    <script>
+        //Here it returns the element with the id of "myDiv":
+        _("#myDiv").el;
+
+        //Here it edit's the text element:
+        _("#myDiv").edit("text", "This is an edited div with the ID of \"myDiv\"");
+
+        //Here it changes the src of 2 elements in one line:
+        _("#picture").edit("src", "https://upload.wikimedia.org/wikipedia/commons/c/c8/Black_Labrador_Retriever_-_Male_IMG_3323.jpg")._("#picture2").edit("src", "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg");
+        //This shows that you can chain.
+
+        //Here it changes the alt of 2 elements in 2 lines:
+        _("#picture").edit("alt", "Black Labrador Retriever");
+        _("#picture2").edit("alt", "Cat August 2010-4.jpg");
+
+        //Here it collects all the elements with the class of "hello" and edit's their color and gives them a border:
+        _(".hello").setStyle("color", "green").setStyle("border", "10px ridge black");
+        //Here it makes a totally new element and appends it to an element with the id of "appendDiv" with a border:
+        var newElement = createElem("p").setID("divP").setClass("divP").setClass("divP2").result;
+        _("#divP").edit("text", "Hello! This is a \"p\" element inside a ");
+        _(".divP").edit("text", "div!", true);
+        _(".divP2").setStyle("margin-left", "10px");
+        _("#appendDiv").append(newElement).setStyle("border", "10px ridge red");
+    </script>
+</body>
+</html>
+  ```
+#### Returned Variables:
