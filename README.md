@@ -119,3 +119,6 @@ While there are a few side functions, MyLib is mainly made for DOM manipulation.
 </html>
   ```
 #### Returned Variables:
+
+-`el`:
+  By using "_("whateverYouWantToSelect").el" it will return the element that has been selected.
