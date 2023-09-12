@@ -118,55 +118,51 @@ function _(selection) {
         return whatToReturn();
     }
     function addClass(classToSet) {
-        if(Array.isArray(LI_elem$23)) {
-            for(var i = 0; i < LI_elem$23.length; i++) {
-                try{
-                    LI_elem$23[i].classList.add(classToSet);
-                }catch(error){
-                    LI_elem$23[i].className += classToSet;
-                }
+        isArrayThenClbck(LI_elem$23, function(i) {
+            try{
+                LI_elem$23[i].classList.add(classToSet);
+            }catch(error){
+                LI_elem$23[i].className += classToSet;
             }
-        }else{
+        }, function() {
             try{
                 LI_elem$23.classList.add(classToSet);
             }catch(error) {
                 LI_elem$23.className += classToSet;
             }
-        }
+        });
         return whatToReturn();
     }
     function removeClass(classToRemove) {
-        if(Array.isArray(LI_elem$23)) {
-            for(var i = 0; i < LI_elem$23.length; i++) {
-                LI_elem$23[i].classList.remove(classToRemove);
-            }
+        isArrayThenClbck(LI_elem$23, function(i) {
+            LI_elem$23[i].classList.remove(classToRemove);
         }else{
             LI_elem$23.classList.remove(classToRemove);
         }
         return whatToReturn();
     }
     function setID(IDToSet) {
-        if(Array.isArray(LI_elem$23)) {
-            for(var i = 0; i < LI_elem$23; i++) {
-                LI_elem$23[i].id = IDToSet;
-            }
-        }else{
+        isArrayThenClbck(LI_elem$23, function(i) {
+            LI_elem$23[i].id = IDToSet;
+        }, function() {
             LI_elem$23.id = IDToSet;
-        }
+        });
         return whatToReturn();
     }
     function removeID() {
-        LI_elem$23.id = null;
+        isArrayThenClBk(LI_elem$23, function() {
+            LI_elem$23[i].id = null;
+        }, {
+            
+        });
         return whatToReturn();
     }
     function append(element) {
-        if(Array.isArray(LI_elem$23)) {
-            for(var i = 0; i < LI_elem$23; i++) {
-                LI_elem$23[i].appendChild(element);
-            }
-        }else{
+        isArrayThenClbck(LI_elem$23, function(i) {
+            LI_elem$23[i].appendChild(element);
+        }, function() {
             LI_elem$23.appendChild(element);
-        }
+        });
         return whatToReturn();
     }
     function setStyle(styleToChangeOrSet, whatToMakeIt) {
@@ -186,22 +182,40 @@ function _(selection) {
         styleToChangeOrSet = camelCase(styleToChangeOrSet);
         //FULL CREDIT TO jQuery UP TO ——————
         //SEE HERE: https://github.com/jquery/jquery/blob/main/src/core/camelCase.js
-        if(Array.isArray(LI_elem$23)) {
-            for(var i = 0; i < LI_elem$23.length; i++) {
-                LI_elem$23[i].style[styleToChangeOrSet] = whatToMakeIt;
-            }
-        }else{
+        isArrayThenClbck(LI_elem$23, function(i) {
+            LI_elem$23[i].style[styleToChangeOrSet] = whatToMakeIt;    
+        }, function(i) {
             LI_elem$23.style[styleToChangeOrSet] = whatToMakeIt;
-        }
+        });
         return whatToReturn();
     }
     checkType();
+    var htmls = [];
+    isArrayThenClbck(LI_elem$23, function(i) {
+        htmls.push(LI_elem$23[i].innerHTML);
+    }, function() {
+        htmls = LI_elem$23.innerHTML;
+    });
+    var alts = [];
+    
+    var srcs = [];
+    var widths = [];
+    var heights = [];
+    function isArrayThenClbk(elementToCheck, callbackIfTrue, callbackIfFalse) {
+        if(Array.isArray(elementToCheck)) {
+            for(var i = 0; i < elementToCheck.length; i++) {
+                callbackIfTrue(i);
+            }
+        }else{
+            callbackIfFalse();
+        }
+    }
     function whatToReturn() {
         return  {
        	  el:LI_elem$23,
             alt:LI_elem$23.alt,
             src:LI_elem$23.text,
-            html:LI_elem$23.innerHTML,
+            html:htmls,
             width:LI_elem$23.width,
             height:LI_elem$23.height,
             edit: edit,
