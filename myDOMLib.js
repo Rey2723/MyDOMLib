@@ -23,9 +23,6 @@ function ErrorCatch(code, htmlElement, type, replace) {
         }
     }
 }
-//new ErrorCatch(LI_createBlankElem$23, document.getElementById("errorP"), "text", false);
-try{
-//iuef
 function LI_createBlankElem$23() {
     var LI_blankElem$23 = document.createElement("blank-element");
     
@@ -59,66 +56,70 @@ function _(selection) {
         function checkAdd() {
             if(add === undefined || add === false) {
                 return false;
-            }if(add === true){
+            }else if(add === true){
                 return true;
             }
         }
         if(whatToEdit === "text") {
-            if(Array.isArray(LI_elem$23)){
-                for(var i = 0; i < LI_elem$23.length; i++) {
-                    if(!checkAdd()) {
-                        LI_elem$23[i].textContent = whatToEditTo;
-                    }else{
-                        LI_elem$23[i].textContent += whatToEditTo;
-                    }
+            isArrayThenClbk(LI_elem$23, function(i) {
+                if(!checkAdd()) {
+                    LI_elem$23[i].textContent = whatToEditTo;
+                }else{
+                    LI_elem$23[i].textContent += whatToEditTo;
                 }
-            }else{
+            }, function(){
                 LI_elem$23.textContent = whatToEditTo;
-            }
+            });
         }
         if(whatToEdit === "html") {
-            if(Array.isArray(LI_elem$23)){
-                for(var i = 0; i < LI_elem$23.length; i++) {
-                    if(!checkAdd()) {
-                        LI_elem$23[i].innerHTML = whatToEditTo;
-                    }else{
-                        LI_elem$23[i].innerHTML += whatToEditTo;
-                    }
+            isArrayThenClbk(LI_elem$23, function(i) {
+                if(!checkAdd()) {
+                    LI_elem$23[i].innerHTML = whatToEditTo;
+                }else{
+                    LI_elem$23[i].innerHTML += whatToEditTo;
                 }
-            }else{
-                LI_elem$23.innerHTML = whatToEditTo;
-            }
+            },function(){
+                if(!checkAdd()) {
+                    LI_elem$23.innerHTML = whatToEditTo;
+                }else{
+                    LI_elem$23.innerHTML += whatToEditTo;
+                }
+            });
         }
         if(whatToEdit === "src") {
-            if(Array.isArray(LI_elem$23)){
-                for(var i = 0; i < LI_elem$23.length; i++) {
+            isArrayThenClbk(LI_elem$23, function(i) {
+                if(!checkAdd()) {
                     LI_elem$23[i].src = whatToEditTo;
+                }else{
+                    LI_elem$23[i].src += whatToEditTo;
                 }
-            }else{
-                LI_elem$23.src = whatToEditTo;
-            }
+            },function(){
+                if(!checkAdd()) {
+                    LI_elem$23.src = whatToEditTo;
+                }else{
+                    LI_elem$23.src += whatToEditTo;
+                }
+            });
         }
         if(whatToEdit === "alt") {
-            if(Array.isArray(LI_elem$23)){
-                for(var i = 0; i < LI_elem$23.length; i++) {
-                    if(!checkAdd()) {
-                        LI_elem$23[i].alt = whatToEditTo;
-                    }else{
-                        LI_elem$23[i].alt += whatToEditTo;
-                    }
+            isArrayThenClbk(LI_elem$23, function(i) {
+                if(!checkAdd()) {
+                    LI_elem$23[i].alt = whatToEditTo;
+                }else{
+                    LI_elem$23[i].alt += whatToEditTo;
                 }
-            }else{
+            },function(){
                 if(!checkAdd()) {
                     LI_elem$23.alt = whatToEditTo;
                 }else{
                     LI_elem$23.alt += whatToEditTo;
                 }
-            }
+            });
         }
         return whatToReturn();
     }
     function addClass(classToSet) {
-        isArrayThenClbck(LI_elem$23, function(i) {
+        isArrayThenClbk(LI_elem$23, function(i) {
             try{
                 LI_elem$23[i].classList.add(classToSet);
             }catch(error){
@@ -134,15 +135,15 @@ function _(selection) {
         return whatToReturn();
     }
     function removeClass(classToRemove) {
-        isArrayThenClbck(LI_elem$23, function(i) {
+        isArrayThenClbk(LI_elem$23, function(i) {
             LI_elem$23[i].classList.remove(classToRemove);
-        }else{
+        }, function(){
             LI_elem$23.classList.remove(classToRemove);
-        }
+        });
         return whatToReturn();
     }
     function setID(IDToSet) {
-        isArrayThenClbck(LI_elem$23, function(i) {
+        isArrayThenClbk(LI_elem$23, function(i) {
             LI_elem$23[i].id = IDToSet;
         }, function() {
             LI_elem$23.id = IDToSet;
@@ -150,15 +151,15 @@ function _(selection) {
         return whatToReturn();
     }
     function removeID() {
-        isArrayThenClBk(LI_elem$23, function() {
+        isArrayThenClbk(LI_elem$23, function() {
             LI_elem$23[i].id = null;
-        }, {
+        }, function(){
             
         });
         return whatToReturn();
     }
     function append(element) {
-        isArrayThenClbck(LI_elem$23, function(i) {
+        isArrayThenClbk(LI_elem$23, function(i) {
             LI_elem$23[i].appendChild(element);
         }, function() {
             LI_elem$23.appendChild(element);
@@ -166,23 +167,25 @@ function _(selection) {
         return whatToReturn();
     }
     function setStyle(styleToChangeOrSet, whatToMakeIt) {
-        //——————
-        // Matches dashed string for camelizing
+        /*——————*/
+        /* Matches dashed string for camelizing*/
         var rdashAlpha = /-([a-z])/g;
         
-        // Used by camelCase as callback to replace()
+        /* Used by camelCase as callback to replace()*/
         function fcamelCase( _all, letter ) {
         	return letter.toUpperCase();
         }
         
-        // Convert dashed to camelCase
+        /* Convert dashed to camelCase*/
         function camelCase( string ) {
         	return string.replace( rdashAlpha, fcamelCase );
         }
         styleToChangeOrSet = camelCase(styleToChangeOrSet);
-        //FULL CREDIT TO jQuery UP TO ——————
-        //SEE HERE: https://github.com/jquery/jquery/blob/main/src/core/camelCase.js
-        isArrayThenClbck(LI_elem$23, function(i) {
+        /*FULL CREDIT TO jQuery UP TO ——————*/
+        /*SEE HERE: https://github.com/jquery/jquery/blob/main/src/core/camelCase.js*/
+        /*Note: I had to turn the //'s into /*...*/
+        /*from the jQuery excerpt because of the way the min.js version of this is. Still full credit to jQuery though*/
+        isArrayThenClbk(LI_elem$23, function(i) {
             LI_elem$23[i].style[styleToChangeOrSet] = whatToMakeIt;    
         }, function(i) {
             LI_elem$23.style[styleToChangeOrSet] = whatToMakeIt;
@@ -191,33 +194,50 @@ function _(selection) {
     }
     checkType();
     var htmls = [];
-    isArrayThenClbck(LI_elem$23, function(i) {
+    isArrayThenClbk(LI_elem$23, function(i) {
         htmls.push(LI_elem$23[i].innerHTML);
     }, function() {
         htmls = LI_elem$23.innerHTML;
     });
     var alts = [];
-    
+    isArrayThenClbk(LI_elem$23, function(i) {
+        alts.push(LI_elem$23[i].alt);
+    }, function() {
+        alts = LI_elem$23.alt;
+    });
     var srcs = [];
+    isArrayThenClbk(LI_elem$23, function(i) {
+        srcs.push(LI_elem$23[i].src);
+    }, function() {
+        srcs = LI_elem$23.src;
+    });
     var widths = [];
+    isArrayThenClbk(LI_elem$23, function(i) {
+        widths.push(LI_elem$23[i].width);
+    }, function() {
+        widths = LI_elem$23.width;
+    });
     var heights = [];
-    function isArrayThenClbk(elementToCheck, callbackIfTrue, callbackIfFalse) {
-        if(Array.isArray(elementToCheck)) {
-            for(var i = 0; i < elementToCheck.length; i++) {
-                callbackIfTrue(i);
-            }
-        }else{
-            callbackIfFalse();
-        }
-    }
+    isArrayThenClbk(LI_elem$23, function(i) {
+        heights.push(LI_elem$23[i].height);
+    }, function() {
+        heights = LI_elem$23.height;
+    });
+    var texts = [];
+    isArrayThenClbk(LI_elem$23, function(i) {
+        texts.push(LI_elem$23[i].textContent);
+    }, function() {
+        texts = LI_elem$23.textContent;
+    });
     function whatToReturn() {
         return  {
-       	  el:LI_elem$23,
-            alt:LI_elem$23.alt,
-            src:LI_elem$23.text,
+       	    el:LI_elem$23,
+            alt:alts,
+            src:srcs,
             html:htmls,
-            width:LI_elem$23.width,
-            height:LI_elem$23.height,
+            width:widths,
+            height:heights,
+            text:texts,
             edit: edit,
             addClass: addClass,
             removeClass: removeClass,
@@ -260,4 +280,13 @@ function createElem(element) {
         setID: setID,
         setClass: setClass,
     };
+}
+function isArrayThenClbk(elementToCheck, callbackIfTrue, callbackIfFalse) {
+    if(Array.isArray(elementToCheck)) {
+        for(var i = 0; i < elementToCheck.length; i++) {
+            callbackIfTrue(i);
+        }
+    }else{
+        callbackIfFalse();
+    }
 }
