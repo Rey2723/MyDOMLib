@@ -2,7 +2,7 @@
 
 Hello! Welcome to MyLib! Note: This is a work in progress, so new features are yet to come!
 
-While there are a few side functions, MyLib is mainly made for DOM manipulation.
+While there are a few side functions, MyDOMLib is mainly made for DOM manipulation.
 
 ## Documentation
 
