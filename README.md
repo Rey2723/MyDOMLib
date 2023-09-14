@@ -65,7 +65,7 @@ While there are a few side functions, MyDOMLib is mainly made for DOM manipulati
 #### Parameter(s):
 
 -`selection`:
-  The HTML element you want to select. It can start with `.` when you want to select a class, `#` for when you wanat to select an ID, and use start with nothing if you are selecting elements.
+  The HTML element you want to select. It can start with `.` when you want to select a class, `#` for when you want to select an ID, and use start with nothing if you are selecting elements.
   Example:
   ```html
 <!DOCTYPE html>
