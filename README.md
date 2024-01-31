@@ -66,7 +66,8 @@ While there are a few side functions, MyDOMLib is mainly made for DOM manipulati
 
 -`selection`:
   The HTML element you want to select. It can start with `.` when you want to select a class, `#` for when you want to select an ID, and use start with nothing if you are selecting elements.
-  Example:
+
+#### Example:
   ```html
 <!DOCTYPE html>
 <html>
@@ -121,4 +122,60 @@ While there are a few side functions, MyDOMLib is mainly made for DOM manipulati
 #### Returned Variables:
 
 -`el`:
-  By using "_("whateverYouWantToSelect").el" it will return the element that has been selected.
+  By using "_('whateverYouWantToSelect').el" it will return the element(s) that has/have been selected.
+  
+-`alt`:
+  By using "_('whateverYouWantToSelect').alt", you will get the alt(s) of the element(s) selected.
+  
+-`src`:
+  By using "_('whateverYouWantToSelect').src", you will get the src(s) of the elements(s) selected.
+  
+-`html`:
+  By using "_('whateverYouWantToSelect').html", you will get the innerHTML(s) of the element(s) selected.
+  
+-`width`:
+  By using "_('whateverYouWantToSelect').width", you will get the width(s) of the element(s) selected.
+  
+-`height`:
+  By using "_('whateverYouWantToSelect').height", you will get the height(s) of the element(s) selected.
+  
+-`text`:
+  By using "_('whateverYouWantToSelect').text", you will get the textContent(s) of the element(s) selected.
+  
+-`edit`:
+  By using "_('whateverYouWantToSelect').edit", you will have the edit function returned to you.
+  
+##### edit(whatToEdit, whatToEditTo, add)
+###### Parameter(s):
+-`whatToEdit`:
+  Basically, what do you want to edit about the element(s). Can either be "text", "html", "src", or "alt".
+  
+-`whatToEditTo`:
+  What you want it to become. Can be a string, function, or a multi-line string.
+  
+-`add`:
+  True if you want to add on to the current value, false if you don't.
+
+Back to the returned variables of _.
+
+-`addClass`:
+  By using "_('whateverYouWantToSelect').addClass", you will have a function that adds a class to the element(s) selected. The only parameter is the class to set to.
+  
+-`removeClass`:
+  By using "_('whateverYouWantToSelect').removeClass", you will have a function that removes a class from the element(s) selected. No parameters needed.
+  
+-`setID`:
+  By using "_('whateverYouWantToSelect').setID", you will have a function that sets the ID of the element(s) selected.
+  
+-`removeID`:
+  By using "_('whateverYouWantToSelect').removeID", you will have a function that removes the ID of the element(s) selected.
+  
+-`append`:
+  By using "_('whateverYouWantToSelect').append", you will have a function that appends an element to the element(s) selected.
+  
+-`setStyle`:
+  By using "_('whateverYouWantToSelect').setStyle", you will have a function that adds CSS style to the selected element(s).
+  
+-`_`:
+  By using this function, you are basically repeating the entire _ function.
+  
